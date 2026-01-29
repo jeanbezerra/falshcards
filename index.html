@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,164 +16,196 @@
 
   <!-- Google Material Symbols (ícones) -->
   <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0" />
 
   <style>
-    :root{
+    :root {
       --bg: #0b1220;
-      --muted: rgba(255,255,255,.72);
-      --border: rgba(255,255,255,.10);
+      --muted: rgba(255, 255, 255, .72);
+      --border: rgba(255, 255, 255, .10);
       --accent: #7c5cff;
 
       /* Cards (claro) */
       --cardBg: #ffffff;
       --cardBorder: rgba(2, 6, 23, .10);
-      --text: #0f172a;        /* slate-900 */
-      --text2: #334155;       /* slate-600 */
-      --chipBg: rgba(124,92,255,.10);
-      --chipBorder: rgba(124,92,255,.25);
+      --text: #0f172a;
+      /* slate-900 */
+      --text2: #334155;
+      /* slate-600 */
+      --chipBg: rgba(124, 92, 255, .10);
+      --chipBorder: rgba(124, 92, 255, .25);
     }
 
-    body{
+    body {
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 0%, rgba(124,92,255,.25), transparent 55%),
-                  radial-gradient(900px 700px at 100% 30%, rgba(56,189,248,.18), transparent 55%),
-                  var(--bg);
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(124, 92, 255, .25), transparent 55%),
+        radial-gradient(900px 700px at 100% 30%, rgba(56, 189, 248, .18), transparent 55%),
+        var(--bg);
       color: #fff;
     }
 
-    .app-shell{ max-width: 980px; margin: 0 auto; }
+    .app-shell {
+      max-width: 980px;
+      margin: 0 auto;
+    }
 
-    .brand-badge{
+    .brand-badge {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
       padding: .35rem .65rem;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
       font-weight: 600;
-      color: rgba(255,255,255,.9);
+      color: rgba(255, 255, 255, .9);
     }
 
-    .material-symbols-rounded{
-      font-variation-settings: 'FILL' 0,'wght' 600,'GRAD' 0,'opsz' 24;
+    .material-symbols-rounded {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
       vertical-align: -3px;
     }
 
-    .hero{
+    .hero {
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
       border-radius: 20px;
       padding: 1.25rem;
     }
-    @media (min-width: 992px){ .hero{ padding: 1.75rem; } }
 
-    .subtle{ color: var(--muted); }
+    @media (min-width: 992px) {
+      .hero {
+        padding: 1.75rem;
+      }
+    }
 
-    .stats-chip{
+    .subtle {
+      color: var(--muted);
+    }
+
+    .stats-chip {
       display: inline-flex;
       align-items: center;
       gap: .4rem;
       padding: .35rem .6rem;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.88);
+      background: rgba(255, 255, 255, .04);
+      color: rgba(255, 255, 255, .88);
       font-size: .9rem;
       white-space: nowrap;
     }
-    .pill-accent{ background: rgba(124,92,255,.14); border-color: rgba(124,92,255,.35); }
 
-    .search{
+    .pill-accent {
+      background: rgba(124, 92, 255, .14);
+      border-color: rgba(124, 92, 255, .35);
+    }
+
+    .search {
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
       color: #fff;
     }
-    .search::placeholder{ color: rgba(255,255,255,.55); }
-    .search:focus{
-      border-color: rgba(124,92,255,.6);
-      box-shadow: 0 0 0 .2rem rgba(124,92,255,.18);
-      background: rgba(255,255,255,.06);
+
+    .search::placeholder {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .search:focus {
+      border-color: rgba(124, 92, 255, .6);
+      box-shadow: 0 0 0 .2rem rgba(124, 92, 255, .18);
+      background: rgba(255, 255, 255, .06);
       color: #fff;
     }
 
     /* ===== Cards claros + texto escuro (correção solicitada) ===== */
-    .list-card{
+    .list-card {
       border: 1px solid var(--cardBorder);
-      background: rgba(255,255,255,.08);
+      background: rgba(255, 255, 255, .08);
       border-radius: 18px;
       overflow: hidden;
     }
-    .accordion-item{
+
+    .accordion-item {
       background: var(--cardBg) !important;
-      border-bottom: 1px solid rgba(2,6,23,.08) !important;
+      border-bottom: 1px solid rgba(2, 6, 23, .08) !important;
     }
-    .accordion-header{ background: var(--cardBg) !important; }
-    .accordion-button{
+
+    .accordion-header {
+      background: var(--cardBg) !important;
+    }
+
+    .accordion-button {
       background: transparent !important;
       color: var(--text) !important;
       padding: 0;
       box-shadow: none !important;
     }
-    .accordion-button::after{
+
+    .accordion-button::after {
       filter: none;
       opacity: .7;
       margin-left: .75rem;
     }
 
-    .tag{
-      border: 1px solid rgba(2,6,23,.12);
-      background: rgba(2,6,23,.03);
-      color: rgba(2,6,23,.80);
+    .tag {
+      border: 1px solid rgba(2, 6, 23, .12);
+      background: rgba(2, 6, 23, .03);
+      color: rgba(2, 6, 23, .80);
       border-radius: 999px;
       padding: .15rem .55rem;
       font-size: .78rem;
       font-weight: 700;
       letter-spacing: .2px;
     }
-    .tag.domain{
+
+    .tag.domain {
       background: var(--chipBg);
       border-color: var(--chipBorder);
-      color: rgba(124,92,255,.95);
+      color: rgba(124, 92, 255, .95);
     }
 
-    .q{
+    .q {
       font-weight: 800;
       line-height: 1.25;
       margin: 0;
       color: var(--text);
     }
-    .a{
+
+    .a {
       color: var(--text2);
       margin: .45rem 0 0 0;
     }
 
-    .icon-badge{
+    .icon-badge {
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      border: 1px solid rgba(2,6,23,.10);
-      background: rgba(2,6,23,.03);
+      border: 1px solid rgba(2, 6, 23, .10);
+      background: rgba(2, 6, 23, .03);
       display: grid;
       place-items: center;
       flex: 0 0 auto;
     }
-    .icon-badge .material-symbols-rounded{ color: rgba(2,6,23,.82); }
 
-    .btn-soft{
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.92);
+    .icon-badge .material-symbols-rounded {
+      color: rgba(2, 6, 23, .82);
     }
-    .btn-soft:hover{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.22);
+
+    .btn-soft {
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .06);
+      color: rgba(255, 255, 255, .92);
+    }
+
+    .btn-soft:hover {
+      background: rgba(255, 255, 255, .10);
+      border-color: rgba(255, 255, 255, .22);
       color: #fff;
     }
 
-    .footer{
-      color: rgba(255,255,255,.60);
+    .footer {
+      color: rgba(255, 255, 255, .60);
       font-size: .9rem;
     }
   </style>
@@ -181,7 +214,8 @@
 <body>
   <div class="app-shell container py-4 py-lg-5">
     <!-- Header -->
-    <div class="d-flex flex-column flex-md-row gap-3 align-items-start align-items-md-center justify-content-between mb-4">
+    <div
+      class="d-flex flex-column flex-md-row gap-3 align-items-start align-items-md-center justify-content-between mb-4">
       <div>
         <div class="brand-badge mb-2">
           <span class="material-symbols-rounded">school</span>
@@ -212,7 +246,8 @@
             <span class="input-group-text search">
               <span class="material-symbols-rounded">search</span>
             </span>
-            <input id="search" class="form-control search" placeholder="Ex.: RAG, embeddings, AUC, RLHF, Bedrock, Macie..." />
+            <input id="search" class="form-control search"
+              placeholder="Ex.: RAG, embeddings, AUC, RLHF, Bedrock, Macie..." />
             <button id="clearBtn" class="btn btn-soft" type="button" title="Limpar busca">
               <span class="material-symbols-rounded">close</span>
             </button>
@@ -265,7 +300,8 @@
               </button>
               <div id="c1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">IA é o guarda-chuva; ML aprende padrões a partir de dados; Deep Learning é um subconjunto de ML baseado em redes neurais profundas.</p>
+                  <p class="a">IA é o guarda-chuva; ML aprende padrões a partir de dados; Deep Learning é um subconjunto
+                    de ML baseado em redes neurais profundas.</p>
                 </div>
               </div>
             </div>
@@ -286,7 +322,8 @@
               </button>
               <div id="c2" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Batch para processar grandes volumes com latência tolerável; tempo real para decisões imediatas (fraude, recomendação, chatbot).</p>
+                  <p class="a">Batch para processar grandes volumes com latência tolerável; tempo real para decisões
+                    imediatas (fraude, recomendação, chatbot).</p>
                 </div>
               </div>
             </div>
@@ -307,7 +344,8 @@
               </button>
               <div id="c3" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Rotulados têm “resposta” (target). Não rotulados não têm. Estruturados: tabela/colunas; não estruturados: texto, imagem, áudio, documentos.</p>
+                  <p class="a">Rotulados têm “resposta” (target). Não rotulados não têm. Estruturados: tabela/colunas;
+                    não estruturados: texto, imagem, áudio, documentos.</p>
                 </div>
               </div>
             </div>
@@ -328,7 +366,8 @@
               </button>
               <div id="c4" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Supervisionado: aprende com rótulos. Não supervisionado: descobre padrões (clusters). Reforço: agente aprende por recompensas/punições em ambiente.</p>
+                  <p class="a">Supervisionado: aprende com rótulos. Não supervisionado: descobre padrões (clusters).
+                    Reforço: agente aprende por recompensas/punições em ambiente.</p>
                 </div>
               </div>
             </div>
@@ -349,14 +388,16 @@
               </button>
               <div id="c5" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Regressão prevê valor contínuo; classificação prevê classe; clustering agrupa por similaridade sem rótulos.</p>
+                  <p class="a">Regressão prevê valor contínuo; classificação prevê classe; clustering agrupa por
+                    similaridade sem rótulos.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d1 ciclo vida ml pipeline eda pré-processamento features treino avaliação deploy monitoramento">
+        <div class="accordion-item"
+          data-tags="d1 ciclo vida ml pipeline eda pré-processamento features treino avaliação deploy monitoramento">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">hub</span></div>
             <div class="w-100">
@@ -370,14 +411,16 @@
               </button>
               <div id="c6" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Coleta → EDA → pré-processamento → engenharia de atributos → treino → ajuste (hyperparams) → avaliação → deploy → monitoramento/retreinamento.</p>
+                  <p class="a">Coleta → EDA → pré-processamento → engenharia de atributos → treino → ajuste
+                    (hyperparams) → avaliação → deploy → monitoramento/retreinamento.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d1 mlops experimentação repetível escalável dívida técnica prontidão produção">
+        <div class="accordion-item"
+          data-tags="d1 mlops experimentação repetível escalável dívida técnica prontidão produção">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">settings_suggest</span></div>
             <div class="w-100">
@@ -391,7 +434,8 @@
               </button>
               <div id="c7" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Práticas para tornar ML repetível e escalável: experimentação, versionamento, automação, monitoramento, retreinamento e prontidão de produção.</p>
+                  <p class="a">Práticas para tornar ML repetível e escalável: experimentação, versionamento, automação,
+                    monitoramento, retreinamento e prontidão de produção.</p>
                 </div>
               </div>
             </div>
@@ -412,7 +456,8 @@
               </button>
               <div id="c8" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Modelo: acurácia, AUC/ROC, F1. Negócio: ROI, custo por usuário, custo de desenvolvimento, feedback do cliente.</p>
+                  <p class="a">Modelo: acurácia, AUC/ROC, F1. Negócio: ROI, custo por usuário, custo de desenvolvimento,
+                    feedback do cliente.</p>
                 </div>
               </div>
             </div>
@@ -434,7 +479,8 @@
               </button>
               <div id="c9" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Tokens são unidades de texto usadas pelo modelo. Eles impactam custo (preço por token), limites de contexto e latência.</p>
+                  <p class="a">Tokens são unidades de texto usadas pelo modelo. Eles impactam custo (preço por token),
+                    limites de contexto e latência.</p>
                 </div>
               </div>
             </div>
@@ -455,7 +501,8 @@
               </button>
               <div id="c10" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Vetores que representam significado; usados para busca semântica, recomendação, clustering e RAG.</p>
+                  <p class="a">Vetores que representam significado; usados para busca semântica, recomendação,
+                    clustering e RAG.</p>
                 </div>
               </div>
             </div>
@@ -476,14 +523,16 @@
               </button>
               <div id="c11" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Transformers dominam linguagem; multimodais lidam com texto+imagem+etc.; difusão é comum em geração de imagens/áudio (denoising progressivo).</p>
+                  <p class="a">Transformers dominam linguagem; multimodais lidam com texto+imagem+etc.; difusão é comum
+                    em geração de imagens/áudio (denoising progressivo).</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d2 casos uso resumo chatbot tradução código imagem áudio vídeo recomendação">
+        <div class="accordion-item"
+          data-tags="d2 casos uso resumo chatbot tradução código imagem áudio vídeo recomendação">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">apps</span></div>
             <div class="w-100">
@@ -497,14 +546,16 @@
               </button>
               <div id="c12" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Geração (imagem/áudio/vídeo), resumo, chatbots, tradução, geração de código, suporte ao cliente, pesquisa e recomendação.</p>
+                  <p class="a">Geração (imagem/áudio/vídeo), resumo, chatbots, tradução, geração de código, suporte ao
+                    cliente, pesquisa e recomendação.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d2 ciclo vida foundation model seleção dados pré-treinamento fine tuning avaliação deploy feedback">
+        <div class="accordion-item"
+          data-tags="d2 ciclo vida foundation model seleção dados pré-treinamento fine tuning avaliação deploy feedback">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">cycle</span></div>
             <div class="w-100">
@@ -518,14 +569,16 @@
               </button>
               <div id="c13" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Seleção de dados → seleção de modelo → pré-treinamento → ajuste fino → avaliação → implantação → feedback.</p>
+                  <p class="a">Seleção de dados → seleção de modelo → pré-treinamento → ajuste fino → avaliação →
+                    implantação → feedback.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d2 vantagens adaptabilidade responsividade simplicidade limitações alucinação não determinismo">
+        <div class="accordion-item"
+          data-tags="d2 vantagens adaptabilidade responsividade simplicidade limitações alucinação não determinismo">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">balance</span></div>
             <div class="w-100">
@@ -539,7 +592,8 @@
               </button>
               <div id="c14" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Vantagens: adaptabilidade, capacidade de resposta, simplicidade. Desvantagens: alucinação, baixa interpretabilidade, imprecisão e não determinismo.</p>
+                  <p class="a">Vantagens: adaptabilidade, capacidade de resposta, simplicidade. Desvantagens:
+                    alucinação, baixa interpretabilidade, imprecisão e não determinismo.</p>
                 </div>
               </div>
             </div>
@@ -560,7 +614,8 @@
               </button>
               <div id="c15" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Amazon Bedrock, Amazon SageMaker JumpStart, PartyRock (Bedrock Playground) e Amazon Q.</p>
+                  <p class="a">Amazon Bedrock, Amazon SageMaker JumpStart, PartyRock (Bedrock Playground) e Amazon Q.
+                  </p>
                 </div>
               </div>
             </div>
@@ -568,7 +623,8 @@
         </div>
 
         <!-- ========= D3: Aplicações de modelos de base ========= -->
-        <div class="accordion-item" data-tags="d3 critérios seleção modelo custo latência modalidade multilíngue tamanho input output">
+        <div class="accordion-item"
+          data-tags="d3 critérios seleção modelo custo latência modalidade multilíngue tamanho input output">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">tune</span></div>
             <div class="w-100">
@@ -582,7 +638,8 @@
               </button>
               <div id="c16" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Custo, modalidade, latência, multilíngue, tamanho do modelo, complexidade, personalização e limites de entrada/saída.</p>
+                  <p class="a">Custo, modalidade, latência, multilíngue, tamanho do modelo, complexidade, personalização
+                    e limites de entrada/saída.</p>
                 </div>
               </div>
             </div>
@@ -603,7 +660,8 @@
               </button>
               <div id="c17" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Controla aleatoriedade/criatividade: baixa = mais determinístico; alta = mais variado (maior risco de imprecisão).</p>
+                  <p class="a">Controla aleatoriedade/criatividade: baixa = mais determinístico; alta = mais variado
+                    (maior risco de imprecisão).</p>
                 </div>
               </div>
             </div>
@@ -624,14 +682,16 @@
               </button>
               <div id="c18" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Geração aumentada por recuperação: busca contexto (KB/documentos) e injeta no prompt para respostas “grounded” e atualizadas.</p>
+                  <p class="a">Geração aumentada por recuperação: busca contexto (KB/documentos) e injeta no prompt para
+                    respostas “grounded” e atualizadas.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d3 banco vetorial opensearch aurora neptune documentdb rds postgresql embeddings">
+        <div class="accordion-item"
+          data-tags="d3 banco vetorial opensearch aurora neptune documentdb rds postgresql embeddings">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">database</span></div>
             <div class="w-100">
@@ -645,14 +705,16 @@
               </button>
               <div id="c19" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Amazon OpenSearch Service, Amazon Aurora, Amazon Neptune, Amazon DocumentDB (MongoDB) e Amazon RDS for PostgreSQL.</p>
+                  <p class="a">Amazon OpenSearch Service, Amazon Aurora, Amazon Neptune, Amazon DocumentDB (MongoDB) e
+                    Amazon RDS for PostgreSQL.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d3 personalização fine tuning pré-treinamento in-context learning rag custo tradeoff">
+        <div class="accordion-item"
+          data-tags="d3 personalização fine tuning pré-treinamento in-context learning rag custo tradeoff">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">payments</span></div>
             <div class="w-100">
@@ -666,7 +728,8 @@
               </button>
               <div id="c20" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Pré-treino/fine-tune aumentam custo/complexidade e exigem dados; in-context é mais rápido; RAG reduz alucinação e mantém conhecimento atualizado.</p>
+                  <p class="a">Pré-treino/fine-tune aumentam custo/complexidade e exigem dados; in-context é mais
+                    rápido; RAG reduz alucinação e mantém conhecimento atualizado.</p>
                 </div>
               </div>
             </div>
@@ -687,7 +750,8 @@
               </button>
               <div id="c21" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Orquestrar passos: planejar, chamar ferramentas/APIs, iterar e concluir objetivos (ex.: agentes no Amazon Bedrock).</p>
+                  <p class="a">Orquestrar passos: planejar, chamar ferramentas/APIs, iterar e concluir objetivos (ex.:
+                    agentes no Amazon Bedrock).</p>
                 </div>
               </div>
             </div>
@@ -708,7 +772,8 @@
               </button>
               <div id="c22" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Contexto + instrução + (opcional) prompt negativo + exemplos; e atenção a limites do modelo/“espaço latente”.</p>
+                  <p class="a">Contexto + instrução + (opcional) prompt negativo + exemplos; e atenção a limites do
+                    modelo/“espaço latente”.</p>
                 </div>
               </div>
             </div>
@@ -729,14 +794,16 @@
               </button>
               <div id="c23" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">São técnicas de engenharia de prompts: sem exemplos, 1 exemplo, poucos exemplos e raciocínio passo a passo (onde aplicável).</p>
+                  <p class="a">São técnicas de engenharia de prompts: sem exemplos, 1 exemplo, poucos exemplos e
+                    raciocínio passo a passo (onde aplicável).</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d3 riscos prompt jailbreak prompt injection envenenamento exposição sequestro">
+        <div class="accordion-item"
+          data-tags="d3 riscos prompt jailbreak prompt injection envenenamento exposição sequestro">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">warning</span></div>
             <div class="w-100">
@@ -757,7 +824,8 @@
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d3 fine tuning instrução transferência domínio pré-treinamento contínuo rlhf">
+        <div class="accordion-item"
+          data-tags="d3 fine tuning instrução transferência domínio pré-treinamento contínuo rlhf">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">model_training</span></div>
             <div class="w-100">
@@ -771,7 +839,8 @@
               </button>
               <div id="c25" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Ajuste de instruções, adaptação por domínio, transferência e pré-treinamento contínuo; preparação inclui curadoria/governança e pode envolver RLHF.</p>
+                  <p class="a">Ajuste de instruções, adaptação por domínio, transferência e pré-treinamento contínuo;
+                    preparação inclui curadoria/governança e pode envolver RLHF.</p>
                 </div>
               </div>
             </div>
@@ -792,7 +861,8 @@
               </button>
               <div id="c26" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Avaliação humana e datasets de referência; métricas como ROUGE, BLEU e BERTScore (dependendo da tarefa).</p>
+                  <p class="a">Avaliação humana e datasets de referência; métricas como ROUGE, BLEU e BERTScore
+                    (dependendo da tarefa).</p>
                 </div>
               </div>
             </div>
@@ -800,7 +870,8 @@
         </div>
 
         <!-- ========= D4: Diretrizes de IA responsável ========= -->
-        <div class="accordion-item" data-tags="d4 responsible ai viés imparcialidade inclusão robustez segurança veracidade">
+        <div class="accordion-item"
+          data-tags="d4 responsible ai viés imparcialidade inclusão robustez segurança veracidade">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">policy</span></div>
             <div class="w-100">
@@ -835,14 +906,16 @@
               </button>
               <div id="c28" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Barreiras de proteção que restringem conteúdo/comportamento (ex.: guardrails no Amazon Bedrock) para reduzir respostas inadequadas e risco.</p>
+                  <p class="a">Barreiras de proteção que restringem conteúdo/comportamento (ex.: guardrails no Amazon
+                    Bedrock) para reduzir respostas inadequadas e risco.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d4 vieses monitoramento sagemaker clarify model monitor a2i subgrupos auditoria humana">
+        <div class="accordion-item"
+          data-tags="d4 vieses monitoramento sagemaker clarify model monitor a2i subgrupos auditoria humana">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">manage_search</span></div>
             <div class="w-100">
@@ -856,14 +929,16 @@
               </button>
               <div id="c29" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Auditorias humanas, análise por subgrupos, qualidade de rótulo e ferramentas como SageMaker Clarify, SageMaker Model Monitor e Amazon A2I.</p>
+                  <p class="a">Auditorias humanas, análise por subgrupos, qualidade de rótulo e ferramentas como
+                    SageMaker Clarify, SageMaker Model Monitor e Amazon A2I.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="accordion-item" data-tags="d4 transparência explicabilidade model cards sagemaker licenciamento human centered">
+        <div class="accordion-item"
+          data-tags="d4 transparência explicabilidade model cards sagemaker licenciamento human centered">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">visibility</span></div>
             <div class="w-100">
@@ -877,7 +952,8 @@
               </button>
               <div id="c30" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Aumentam confiança/auditoria e suportam decisões. Model Cards documentam objetivos, dados, limitações, riscos e uso adequado de modelos (ex.: no SageMaker).</p>
+                  <p class="a">Aumentam confiança/auditoria e suportam decisões. Model Cards documentam objetivos,
+                    dados, limitações, riscos e uso adequado de modelos (ex.: no SageMaker).</p>
                 </div>
               </div>
             </div>
@@ -885,7 +961,8 @@
         </div>
 
         <!-- ========= D5: Segurança, conformidade e governança ========= -->
-        <div class="accordion-item" data-tags="d5 segurança iam permissões perfis criptografia macie privatelink responsabilidade compartilhada">
+        <div class="accordion-item"
+          data-tags="d5 segurança iam permissões perfis criptografia macie privatelink responsabilidade compartilhada">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
             <div class="icon-badge"><span class="material-symbols-rounded">security</span></div>
             <div class="w-100">
@@ -899,7 +976,8 @@
               </button>
               <div id="c31" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">IAM (políticas/permissões/perfis), criptografia, Amazon Macie, AWS PrivateLink e o modelo de responsabilidade compartilhada.</p>
+                  <p class="a">IAM (políticas/permissões/perfis), criptografia, Amazon Macie, AWS PrivateLink e o modelo
+                    de responsabilidade compartilhada.</p>
                 </div>
               </div>
             </div>
@@ -920,7 +998,8 @@
               </button>
               <div id="c32" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Registrar origem/linhagem e catalogação de dados; manter documentação (ex.: Model Cards) para auditoria e confiabilidade.</p>
+                  <p class="a">Registrar origem/linhagem e catalogação de dados; manter documentação (ex.: Model Cards)
+                    para auditoria e confiabilidade.</p>
                 </div>
               </div>
             </div>
@@ -941,12 +1020,386 @@
               </button>
               <div id="c33" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Padrões e frameworks como ISO, SOC e leis/controles relacionados à responsabilidade algorítmica (dependendo do contexto regulatório).</p>
+                  <p class="a">Padrões e frameworks como ISO, SOC e leis/controles relacionados à responsabilidade
+                    algorítmica (dependendo do contexto regulatório).</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+
+        <!-- ========================= -->
+        <!-- Amazon Augmented AI (A2I) -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml a2i d4 human-in-the-loop governança">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">person_search</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2i1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D4</span><span class="tag">A2I</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Augmented AI (A2I)?</p>
+                </div>
+              </button>
+              <div id="a2i1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Permite incluir revisão humana (human-in-the-loop) em previsões de ML para auditoria,
+                    compliance e melhoria de qualidade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Bedrock -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml bedrock d2 d3 genai foundation-models">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">cloud</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#bedrock1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D2/D3</span><span class="tag">Bedrock</span>
+                  </div>
+                  <p class="q">O que é o Amazon Bedrock?</p>
+                </div>
+              </button>
+              <div id="bedrock1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Serviço gerenciado para criar aplicações de IA generativa usando foundation models via
+                    API, com governança e segurança.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Comprehend -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml comprehend d1 nlp texto">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">text_fields</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#comprehend1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">NLP</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Comprehend?</p>
+                </div>
+              </button>
+              <div id="comprehend1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Serviço de NLP para analisar texto, identificando sentimento, entidades, tópicos, idioma
+                    e frases-chave.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Fraud Detector -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml fraud-detector d1 fraude risco">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">report_problem</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#fraud1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">Fraude</span>
+                  </div>
+                  <p class="q">Qual o objetivo do Amazon Fraud Detector?</p>
+                </div>
+              </button>
+              <div id="fraud1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Detectar atividades fraudulentas em eventos como transações, logins e criação de contas
+                    usando ML.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Kendra -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml kendra d3 search semantica">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">manage_search</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#kendra1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Search</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Kendra?</p>
+                </div>
+              </button>
+              <div id="kendra1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Busca inteligente corporativa com entendimento semântico para responder perguntas a
+                    partir de documentos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Lex -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml lex d1 chatbot nlu">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">chat</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lex1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">Chatbot</span>
+                  </div>
+                  <p class="q">Qual é a função do Amazon Lex?</p>
+                </div>
+              </button>
+              <div id="lex1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Criar chatbots e voicebots com reconhecimento de intenções e coleta de informações via
+                    linguagem natural.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Personalize -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml personalize d1 recomendacao">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">recommend</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#personalize1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">Recomendação</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Personalize?</p>
+                </div>
+              </button>
+              <div id="personalize1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Gerar recomendações personalizadas de itens, rankings e conteúdo com base no
+                    comportamento do usuário.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Polly -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml polly d1 tts voz">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">record_voice_over</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#polly1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">TTS</span>
+                  </div>
+                  <p class="q">O que o Amazon Polly faz?</p>
+                </div>
+              </button>
+              <div id="polly1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Converte texto em fala natural (Text-to-Speech), com múltiplas vozes e idiomas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Q -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml amazon-q d2 assistente produtividade">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">assistant</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D2</span><span class="tag">Assistant</span>
+                  </div>
+                  <p class="q">O que é o Amazon Q?</p>
+                </div>
+              </button>
+              <div id="q1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Assistente de IA para produtividade e suporte a tarefas técnicas e de negócio integrado
+                    ao ecossistema AWS.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Rekognition -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml rekognition d1 visao computacional imagem video">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">image_search</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rek1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">Visão</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Rekognition?</p>
+                </div>
+              </button>
+              <div id="rek1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Analisar imagens e vídeos para detectar objetos, cenas, faces e aplicar moderação de
+                    conteúdo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon SageMaker -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml sagemaker d1 d3 mlops treinamento deploy">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">hub</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sm1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1/D3</span><span class="tag">SageMaker</span>
+                  </div>
+                  <p class="q">Qual o papel do Amazon SageMaker?</p>
+                </div>
+              </button>
+              <div id="sm1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Plataforma completa para criar, treinar, ajustar, implantar e monitorar modelos de
+                    machine learning.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Textract -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml textract d1 ocr documentos">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">document_scanner</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#textract1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">OCR</span>
+                  </div>
+                  <p class="q">Para que serve o Amazon Textract?</p>
+                </div>
+              </button>
+              <div id="textract1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Extrair texto e estrutura (tabelas e formulários) de documentos digitalizados
+                    automaticamente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Transcribe -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml transcribe d1 stt audio">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">hearing</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#transcribe1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">STT</span>
+                  </div>
+                  <p class="q">O que faz o Amazon Transcribe?</p>
+                </div>
+              </button>
+              <div id="transcribe1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Converte áudio em texto (Speech-to-Text), incluindo transcrição de chamadas e reuniões.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <!-- Amazon Translate -->
+        <!-- ========================= -->
+
+        <div class="accordion-item" data-tags="ml translate d1 tradução idiomas">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">translate</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#translate1">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D1</span><span class="tag">Tradução</span>
+                  </div>
+                  <p class="q">Qual é a finalidade do Amazon Translate?</p>
+                </div>
+              </button>
+              <div id="translate1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Traduzir texto automaticamente entre múltiplos idiomas com ML gerenciado.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       </div>
     </div>
@@ -1013,4 +1466,5 @@
     setCountInfo();
   </script>
 </body>
+
 </html>
