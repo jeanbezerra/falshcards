@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flashcards — AWS Certified AI Practitioner</title>
+  <title>Flashcards — AWS Certified AI Practitioner (AIF-C01)</title>
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,12 +20,19 @@
   <style>
     :root{
       --bg: #0b1220;
-      --card: #0f1a31;
       --muted: rgba(255,255,255,.72);
       --border: rgba(255,255,255,.10);
       --accent: #7c5cff;
-      --accent2: #38bdf8;
+
+      /* Cards (claro) */
+      --cardBg: #ffffff;
+      --cardBorder: rgba(2, 6, 23, .10);
+      --text: #0f172a;        /* slate-900 */
+      --text2: #334155;       /* slate-600 */
+      --chipBg: rgba(124,92,255,.10);
+      --chipBorder: rgba(124,92,255,.25);
     }
+
     body{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: radial-gradient(1200px 800px at 20% 0%, rgba(124,92,255,.25), transparent 55%),
@@ -33,10 +40,9 @@
                   var(--bg);
       color: #fff;
     }
-    .app-shell{
-      max-width: 980px;
-      margin: 0 auto;
-    }
+
+    .app-shell{ max-width: 980px; margin: 0 auto; }
+
     .brand-badge{
       display: inline-flex;
       align-items: center;
@@ -48,22 +54,22 @@
       font-weight: 600;
       color: rgba(255,255,255,.9);
     }
+
     .material-symbols-rounded{
       font-variation-settings: 'FILL' 0,'wght' 600,'GRAD' 0,'opsz' 24;
       vertical-align: -3px;
     }
+
     .hero{
       border: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border-radius: 20px;
       padding: 1.25rem;
     }
-    @media (min-width: 992px){
-      .hero{ padding: 1.75rem; }
-    }
-    .subtle{
-      color: var(--muted);
-    }
+    @media (min-width: 992px){ .hero{ padding: 1.75rem; } }
+
+    .subtle{ color: var(--muted); }
+
     .stats-chip{
       display: inline-flex;
       align-items: center;
@@ -76,6 +82,8 @@
       font-size: .9rem;
       white-space: nowrap;
     }
+    .pill-accent{ background: rgba(124,92,255,.14); border-color: rgba(124,92,255,.35); }
+
     .search{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.04);
@@ -88,50 +96,70 @@
       background: rgba(255,255,255,.06);
       color: #fff;
     }
+
+    /* ===== Cards claros + texto escuro (correção solicitada) ===== */
     .list-card{
-      border: 1px solid var(--border);
-      background: rgba(15,26,49,.72);
+      border: 1px solid var(--cardBorder);
+      background: rgba(255,255,255,.08);
       border-radius: 18px;
       overflow: hidden;
     }
-    .list-group-item{
-      background: transparent !important;
-      color: rgba(255,255,255,.92) !important;
-      border-color: rgba(255,255,255,.08) !important;
-      padding: 1rem;
+    .accordion-item{
+      background: var(--cardBg) !important;
+      border-bottom: 1px solid rgba(2,6,23,.08) !important;
     }
+    .accordion-header{ background: var(--cardBg) !important; }
+    .accordion-button{
+      background: transparent !important;
+      color: var(--text) !important;
+      padding: 0;
+      box-shadow: none !important;
+    }
+    .accordion-button::after{
+      filter: none;
+      opacity: .7;
+      margin-left: .75rem;
+    }
+
     .tag{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(2,6,23,.12);
+      background: rgba(2,6,23,.03);
+      color: rgba(2,6,23,.80);
       border-radius: 999px;
       padding: .15rem .55rem;
       font-size: .78rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: .2px;
     }
+    .tag.domain{
+      background: var(--chipBg);
+      border-color: var(--chipBorder);
+      color: rgba(124,92,255,.95);
+    }
+
     .q{
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.25;
       margin: 0;
+      color: var(--text);
     }
     .a{
-      color: rgba(255,255,255,.78);
-      margin: .35rem 0 0 0;
+      color: var(--text2);
+      margin: .45rem 0 0 0;
     }
+
     .icon-badge{
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(2,6,23,.10);
+      background: rgba(2,6,23,.03);
       display: grid;
       place-items: center;
       flex: 0 0 auto;
     }
-    .icon-badge .material-symbols-rounded{
-      color: rgba(255,255,255,.92);
-    }
+    .icon-badge .material-symbols-rounded{ color: rgba(2,6,23,.82); }
+
     .btn-soft{
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06);
@@ -142,24 +170,10 @@
       border-color: rgba(255,255,255,.22);
       color: #fff;
     }
-    .accordion-button{
-      background: transparent !important;
-      color: rgba(255,255,255,.92) !important;
-      padding: 0;
-      box-shadow: none !important;
-    }
-    .accordion-button::after{
-      filter: invert(1);
-      opacity: .9;
-      margin-left: .75rem;
-    }
+
     .footer{
       color: rgba(255,255,255,.60);
       font-size: .9rem;
-    }
-    .pill-accent{
-      background: rgba(124,92,255,.14);
-      border-color: rgba(124,92,255,.35);
     }
   </style>
 </head>
@@ -174,7 +188,7 @@
           Flashcards — AIF-C01
         </div>
         <h1 class="h3 mb-1">AWS Certified AI Practitioner</h1>
-        <div class="subtle">Lista mobile-friendly de perguntas & respostas (tap para expandir).</div>
+        <div class="subtle">Lista mobile-friendly (tap para expandir) + busca + expand/recolher.</div>
       </div>
 
       <div class="d-flex flex-wrap gap-2">
@@ -184,7 +198,7 @@
         </span>
         <span class="stats-chip">
           <span class="material-symbols-rounded">bookmark</span>
-          Revisão rápida
+          5 domínios (guia oficial)
         </span>
       </div>
     </div>
@@ -198,7 +212,7 @@
             <span class="input-group-text search">
               <span class="material-symbols-rounded">search</span>
             </span>
-            <input id="search" class="form-control search" placeholder="Ex.: Bedrock, SageMaker, RAG, viés..." />
+            <input id="search" class="form-control search" placeholder="Ex.: RAG, embeddings, AUC, RLHF, Bedrock, Macie..." />
             <button id="clearBtn" class="btn btn-soft" type="button" title="Limpar busca">
               <span class="material-symbols-rounded">close</span>
             </button>
@@ -222,11 +236,11 @@
       <hr class="border-0 my-3" style="height:1px;background:rgba(255,255,255,.10)">
 
       <div class="d-flex flex-wrap gap-2 align-items-center">
-        <span class="tag"><span class="material-symbols-rounded me-1">psychology</span>Fundamentos</span>
-        <span class="tag"><span class="material-symbols-rounded me-1">auto_awesome</span>GenAI</span>
-        <span class="tag"><span class="material-symbols-rounded me-1">policy</span>Responsible AI</span>
-        <span class="tag"><span class="material-symbols-rounded me-1">security</span>Segurança</span>
-        <span class="tag"><span class="material-symbols-rounded me-1">dns</span>Serviços AWS</span>
+        <span class="tag domain">D1 IA/ML</span>
+        <span class="tag domain">D2 GenAI</span>
+        <span class="tag domain">D3 Foundation Models</span>
+        <span class="tag domain">D4 Responsible AI</span>
+        <span class="tag domain">D5 Security/Gov</span>
 
         <span class="ms-auto subtle" id="countInfo">Exibindo 0 de 0</span>
       </div>
@@ -236,296 +250,698 @@
     <div class="list-card p-0">
       <div class="accordion accordion-flush" id="flashcards">
 
-        <!-- Item 1 -->
-        <div class="accordion-item" data-tags="fundamentos visão certificação">
+        <!-- ========= D1: Fundamentos de IA e ML ========= -->
+        <div class="accordion-item" data-tags="d1 fundamentos ia ml deep learning diferença">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">verified</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">verified</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Fundamentos</span>
+                    <span class="tag domain">D1</span><span class="tag">Conceitos</span>
                   </div>
-                  <p class="q">O que a certificação AWS Certified AI Practitioner valida?</p>
+                  <p class="q">Qual a diferença entre IA, ML e Deep Learning?</p>
                 </div>
               </button>
               <div id="c1" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Conhecimentos fundamentais de IA, ML e IA generativa (conceitos, casos de uso e serviços AWS), com foco conceitual/estratégico.</p>
+                  <p class="a">IA é o guarda-chuva; ML aprende padrões a partir de dados; Deep Learning é um subconjunto de ML baseado em redes neurais profundas.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 2 -->
-        <div class="accordion-item" data-tags="fundamentos prova formato duração">
+        <div class="accordion-item" data-tags="d1 inferência batch tempo real">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">quiz</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">schedule</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Fundamentos</span>
+                    <span class="tag domain">D1</span><span class="tag">Inferência</span>
                   </div>
-                  <p class="q">Qual o formato do exame (tempo e número de questões)?</p>
+                  <p class="q">Inferência em lote (batch) vs tempo real: quando usar?</p>
                 </div>
               </button>
               <div id="c2" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Prova com ~65 questões e 90 minutos (nível Foundational).</p>
+                  <p class="a">Batch para processar grandes volumes com latência tolerável; tempo real para decisões imediatas (fraude, recomendação, chatbot).</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 3 -->
-        <div class="accordion-item" data-tags="ml fundamentos definição">
+        <div class="accordion-item" data-tags="d1 dados rotulados não rotulados estruturados não estruturados">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">insights</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">dataset</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Fundamentos</span>
-                    <span class="tag">ML</span>
+                    <span class="tag domain">D1</span><span class="tag">Dados</span>
                   </div>
-                  <p class="q">O que é Machine Learning (ML)?</p>
+                  <p class="q">O que são dados rotulados vs não rotulados? E estruturados vs não estruturados?</p>
                 </div>
               </button>
               <div id="c3" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Técnicas que permitem aprender padrões a partir de dados para prever/classificar/decidir sem regras explícitas para cada caso.</p>
+                  <p class="a">Rotulados têm “resposta” (target). Não rotulados não têm. Estruturados: tabela/colunas; não estruturados: texto, imagem, áudio, documentos.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 4 -->
-        <div class="accordion-item" data-tags="genai fundamentos definição">
+        <div class="accordion-item" data-tags="d1 supervisionado não supervisionado reforço">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">auto_awesome</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">school</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">GenAI</span>
+                    <span class="tag domain">D1</span><span class="tag">Aprendizado</span>
                   </div>
-                  <p class="q">O que é IA Generativa?</p>
+                  <p class="q">Defina: aprendizado supervisionado, não supervisionado e por reforço.</p>
                 </div>
               </button>
               <div id="c4" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">IA capaz de gerar conteúdo novo (texto/imagem/áudio/código) com base em padrões aprendidos em grandes volumes de dados.</p>
+                  <p class="a">Supervisionado: aprende com rótulos. Não supervisionado: descobre padrões (clusters). Reforço: agente aprende por recompensas/punições em ambiente.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 5 -->
-        <div class="accordion-item" data-tags="foundation models definição llm">
+        <div class="accordion-item" data-tags="d1 regressão classificação agrupamento">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">model_training</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">insights</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c5">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">GenAI</span>
-                    <span class="tag">Modelos</span>
+                    <span class="tag domain">D1</span><span class="tag">Técnicas</span>
                   </div>
-                  <p class="q">O que são Foundation Models?</p>
+                  <p class="q">Regressão vs classificação vs agrupamento (clustering): qual a ideia?</p>
                 </div>
               </button>
               <div id="c5" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Modelos grandes pré-treinados (ex.: LLMs) que podem ser adaptados para múltiplas tarefas (via prompt, fine-tuning, RAG, etc.).</p>
+                  <p class="a">Regressão prevê valor contínuo; classificação prevê classe; clustering agrupa por similaridade sem rótulos.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 6 -->
-        <div class="accordion-item" data-tags="embeddings vetores busca semântica rag">
+        <div class="accordion-item" data-tags="d1 ciclo vida ml pipeline eda pré-processamento features treino avaliação deploy monitoramento">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">scatter_plot</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">hub</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c6">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">GenAI</span>
-                    <span class="tag">RAG</span>
+                    <span class="tag domain">D1</span><span class="tag">Ciclo de vida</span>
                   </div>
-                  <p class="q">O que são embeddings e para que servem?</p>
+                  <p class="q">Quais são as etapas típicas de um pipeline de ML?</p>
                 </div>
               </button>
               <div id="c6" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Representações vetoriais de texto/imagem que capturam similaridade semântica; usados em busca semântica, clustering, recomendação e RAG.</p>
+                  <p class="a">Coleta → EDA → pré-processamento → engenharia de atributos → treino → ajuste (hyperparams) → avaliação → deploy → monitoramento/retreinamento.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 7 -->
-        <div class="accordion-item" data-tags="rag definição recuperação contexto">
+        <div class="accordion-item" data-tags="d1 mlops experimentação repetível escalável dívida técnica prontidão produção">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">library_books</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">settings_suggest</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c7">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">GenAI</span>
-                    <span class="tag">RAG</span>
+                    <span class="tag domain">D1</span><span class="tag">MLOps</span>
                   </div>
-                  <p class="q">O que é RAG (Retrieval-Augmented Generation)?</p>
+                  <p class="q">O que é MLOps (visão de prova)?</p>
                 </div>
               </button>
               <div id="c7" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Técnica que “anexa” contexto recuperado (docs/KB) ao prompt para reduzir alucinação e responder usando fontes atualizadas.</p>
+                  <p class="a">Práticas para tornar ML repetível e escalável: experimentação, versionamento, automação, monitoramento, retreinamento e prontidão de produção.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 8 -->
-        <div class="accordion-item" data-tags="sagemaker serviço treinamento deploy mlops">
+        <div class="accordion-item" data-tags="d1 métricas acurácia auc roc f1 métricas negócio roi">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">hub</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">query_stats</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c8">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Serviços AWS</span>
-                    <span class="tag">ML</span>
+                    <span class="tag domain">D1</span><span class="tag">Métricas</span>
                   </div>
-                  <p class="q">Para que serve o Amazon SageMaker?</p>
+                  <p class="q">Exemplos de métricas de modelo e de negócio para avaliar ML?</p>
                 </div>
               </button>
               <div id="c8" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Plataforma para construir, treinar, ajustar e implantar modelos de ML, suportando pipelines/MLOps e endpoints gerenciados.</p>
+                  <p class="a">Modelo: acurácia, AUC/ROC, F1. Negócio: ROI, custo por usuário, custo de desenvolvimento, feedback do cliente.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 9 -->
-        <div class="accordion-item" data-tags="bedrock serviço genai foundation models">
+        <!-- ========= D2: Fundamentos de IA generativa ========= -->
+        <div class="accordion-item" data-tags="d2 tokens chunking fragmentação">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">cloud</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">token</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c9">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Serviços AWS</span>
-                    <span class="tag">GenAI</span>
+                    <span class="tag domain">D2</span><span class="tag">Conceitos</span>
                   </div>
-                  <p class="q">O que é o Amazon Bedrock?</p>
+                  <p class="q">O que são tokens e por que isso importa em GenAI?</p>
                 </div>
               </button>
               <div id="c9" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Serviço gerenciado para consumir Foundation Models via API (chat, embeddings, etc.) e construir apps GenAI com governança.</p>
+                  <p class="a">Tokens são unidades de texto usadas pelo modelo. Eles impactam custo (preço por token), limites de contexto e latência.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 10 -->
-        <div class="accordion-item" data-tags="responsible ai viés fairness explicabilidade">
+        <div class="accordion-item" data-tags="d2 embeddings vetores similaridade busca semântica">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">policy</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">scatter_plot</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c10">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Responsible AI</span>
+                    <span class="tag domain">D2</span><span class="tag">Embeddings</span>
                   </div>
-                  <p class="q">O que envolve Responsible AI?</p>
+                  <p class="q">Embeddings: o que são e para que servem?</p>
                 </div>
               </button>
               <div id="c10" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Redução de viés, transparência, explicabilidade, privacidade, segurança e avaliação de impacto/risco ao longo do ciclo de vida.</p>
+                  <p class="a">Vetores que representam significado; usados para busca semântica, recomendação, clustering e RAG.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 11 -->
-        <div class="accordion-item" data-tags="segurança privacidade dados pii governança">
+        <div class="accordion-item" data-tags="d2 transformers llm multimodal difusão diffusion">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">security</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">auto_awesome</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c11">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">Segurança</span>
-                    <span class="tag">Governança</span>
+                    <span class="tag domain">D2</span><span class="tag">Modelos</span>
                   </div>
-                  <p class="q">Quais cuidados de segurança são comuns em soluções de IA?</p>
+                  <p class="q">O que são LLMs baseados em transformers, modelos multimodais e modelos de difusão?</p>
                 </div>
               </button>
               <div id="c11" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">Controle de acesso (IAM), criptografia, segregação de dados, proteção de PII, auditoria/logs e políticas de retenção/compliance.</p>
+                  <p class="a">Transformers dominam linguagem; multimodais lidam com texto+imagem+etc.; difusão é comum em geração de imagens/áudio (denoising progressivo).</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Item 12 -->
-        <div class="accordion-item" data-tags="prompt engineering alucinação mitigação">
+        <div class="accordion-item" data-tags="d2 casos uso resumo chatbot tradução código imagem áudio vídeo recomendação">
           <div class="accordion-header p-3 d-flex gap-3 align-items-start">
-            <div class="icon-badge">
-              <span class="material-symbols-rounded">tune</span>
-            </div>
+            <div class="icon-badge"><span class="material-symbols-rounded">apps</span></div>
             <div class="w-100">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c12">
                 <div class="w-100">
                   <div class="d-flex flex-wrap gap-2 mb-1">
-                    <span class="tag">GenAI</span>
-                    <span class="tag">Prática</span>
+                    <span class="tag domain">D2</span><span class="tag">Use cases</span>
                   </div>
-                  <p class="q">Como mitigar alucinação em LLMs (visão de prova)?</p>
+                  <p class="q">Cite casos de uso típicos de GenAI cobrados no guia.</p>
                 </div>
               </button>
               <div id="c12" class="accordion-collapse collapse" data-bs-parent="#flashcards">
                 <div class="accordion-body pt-2 pb-0 px-0">
-                  <p class="a">RAG com fontes confiáveis, prompt com instruções/limites, validação pós-resposta, grounded answers e observabilidade.</p>
+                  <p class="a">Geração (imagem/áudio/vídeo), resumo, chatbots, tradução, geração de código, suporte ao cliente, pesquisa e recomendação.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d2 ciclo vida foundation model seleção dados pré-treinamento fine tuning avaliação deploy feedback">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">cycle</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c13">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D2</span><span class="tag">Ciclo de vida</span>
+                  </div>
+                  <p class="q">Ciclo de vida de um modelo de base (FM): quais passos?</p>
+                </div>
+              </button>
+              <div id="c13" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Seleção de dados → seleção de modelo → pré-treinamento → ajuste fino → avaliação → implantação → feedback.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d2 vantagens adaptabilidade responsividade simplicidade limitações alucinação não determinismo">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">balance</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c14">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D2</span><span class="tag">Trade-offs</span>
+                  </div>
+                  <p class="q">Vantagens e desvantagens clássicas de GenAI?</p>
+                </div>
+              </button>
+              <div id="c14" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Vantagens: adaptabilidade, capacidade de resposta, simplicidade. Desvantagens: alucinação, baixa interpretabilidade, imprecisão e não determinismo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d2 serviços aws genai jumpstart bedrock partyrock amazon q">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">cloud</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c15">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D2</span><span class="tag">AWS</span>
+                  </div>
+                  <p class="q">Quais serviços/recursos AWS aparecem como base para apps GenAI no guia?</p>
+                </div>
+              </button>
+              <div id="c15" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Amazon Bedrock, Amazon SageMaker JumpStart, PartyRock (Bedrock Playground) e Amazon Q.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========= D3: Aplicações de modelos de base ========= -->
+        <div class="accordion-item" data-tags="d3 critérios seleção modelo custo latência modalidade multilíngue tamanho input output">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">tune</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c16">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Seleção</span>
+                  </div>
+                  <p class="q">Critérios para escolher um modelo pré-treinado (FM) para um caso de uso?</p>
+                </div>
+              </button>
+              <div id="c16" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Custo, modalidade, latência, multilíngue, tamanho do modelo, complexidade, personalização e limites de entrada/saída.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 parâmetros inferência temperatura max tokens tamanho resposta">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">thermostat</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c17">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Inferência</span>
+                  </div>
+                  <p class="q">O que a “temperatura” muda na resposta do LLM?</p>
+                </div>
+              </button>
+              <div id="c17" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Controla aleatoriedade/criatividade: baixa = mais determinístico; alta = mais variado (maior risco de imprecisão).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 rag definição bedrock knowledge base">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">library_books</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c18">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">RAG</span>
+                  </div>
+                  <p class="q">RAG: definição e por que é importante em aplicações empresariais?</p>
+                </div>
+              </button>
+              <div id="c18" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Geração aumentada por recuperação: busca contexto (KB/documentos) e injeta no prompt para respostas “grounded” e atualizadas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 banco vetorial opensearch aurora neptune documentdb rds postgresql embeddings">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">database</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c19">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Vetores</span>
+                  </div>
+                  <p class="q">Quais serviços AWS o guia cita para armazenar embeddings em bancos vetoriais?</p>
+                </div>
+              </button>
+              <div id="c19" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Amazon OpenSearch Service, Amazon Aurora, Amazon Neptune, Amazon DocumentDB (MongoDB) e Amazon RDS for PostgreSQL.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 personalização fine tuning pré-treinamento in-context learning rag custo tradeoff">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">payments</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c20">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Trade-offs</span>
+                  </div>
+                  <p class="q">Pré-treinar, fine-tune, in-context learning ou RAG: como pensar em trade-off?</p>
+                </div>
+              </button>
+              <div id="c20" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Pré-treino/fine-tune aumentam custo/complexidade e exigem dados; in-context é mais rápido; RAG reduz alucinação e mantém conhecimento atualizado.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 agentes tarefas multi etapas bedrock agents">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">smart_toy</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c21">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Agentes</span>
+                  </div>
+                  <p class="q">Qual a função de “agentes” em tarefas de várias etapas?</p>
+                </div>
+              </button>
+              <div id="c21" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Orquestrar passos: planejar, chamar ferramentas/APIs, iterar e concluir objetivos (ex.: agentes no Amazon Bedrock).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 prompt engineering contexto instrução negativo latent space">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">edit</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c22">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Prompts</span>
+                  </div>
+                  <p class="q">Componentes de prompt (segundo o guia): o que costuma entrar?</p>
+                </div>
+              </button>
+              <div id="c22" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Contexto + instrução + (opcional) prompt negativo + exemplos; e atenção a limites do modelo/“espaço latente”.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 técnicas prompt zero-shot one-shot few-shot chain-of-thought">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">psychology</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c23">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Técnicas</span>
+                  </div>
+                  <p class="q">Zero-shot, one-shot, few-shot e chain-of-thought: quando aparecem?</p>
+                </div>
+              </button>
+              <div id="c23" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">São técnicas de engenharia de prompts: sem exemplos, 1 exemplo, poucos exemplos e raciocínio passo a passo (onde aplicável).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 riscos prompt jailbreak prompt injection envenenamento exposição sequestro">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">warning</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c24">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Riscos</span>
+                  </div>
+                  <p class="q">Quais riscos/limitações de prompt engineering o guia chama atenção?</p>
+                </div>
+              </button>
+              <div id="c24" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Exposição de dados, envenenamento, sequestro e jailbreak (inclui prompt injection).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 fine tuning instrução transferência domínio pré-treinamento contínuo rlhf">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">model_training</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c25">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Ajuste</span>
+                  </div>
+                  <p class="q">Métodos de ajuste fino (fine-tuning) citados no guia: quais são?</p>
+                </div>
+              </button>
+              <div id="c25" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Ajuste de instruções, adaptação por domínio, transferência e pré-treinamento contínuo; preparação inclui curadoria/governança e pode envolver RLHF.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d3 avaliação rouge bleu bertscore avaliação humana benchmark">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">fact_check</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c26">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D3</span><span class="tag">Avaliação</span>
+                  </div>
+                  <p class="q">Como avaliar Foundation Models? Cite métricas do guia.</p>
+                </div>
+              </button>
+              <div id="c26" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Avaliação humana e datasets de referência; métricas como ROUGE, BLEU e BERTScore (dependendo da tarefa).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========= D4: Diretrizes de IA responsável ========= -->
+        <div class="accordion-item" data-tags="d4 responsible ai viés imparcialidade inclusão robustez segurança veracidade">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">policy</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c27">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D4</span><span class="tag">Pilares</span>
+                  </div>
+                  <p class="q">Quais características compõem IA responsável (segundo o guia)?</p>
+                </div>
+              </button>
+              <div id="c27" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Viés, imparcialidade, inclusão, robustez, segurança e veracidade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d4 guardrails bedrock barreiras proteção">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">shield</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c28">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D4</span><span class="tag">Ferramentas</span>
+                  </div>
+                  <p class="q">O que são “guardrails” e como eles ajudam em GenAI?</p>
+                </div>
+              </button>
+              <div id="c28" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Barreiras de proteção que restringem conteúdo/comportamento (ex.: guardrails no Amazon Bedrock) para reduzir respostas inadequadas e risco.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d4 vieses monitoramento sagemaker clarify model monitor a2i subgrupos auditoria humana">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">manage_search</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c29">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D4</span><span class="tag">Monitoramento</span>
+                  </div>
+                  <p class="q">Como detectar/monitorar viés e confiabilidade? Quais exemplos o guia cita?</p>
+                </div>
+              </button>
+              <div id="c29" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Auditorias humanas, análise por subgrupos, qualidade de rótulo e ferramentas como SageMaker Clarify, SageMaker Model Monitor e Amazon A2I.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d4 transparência explicabilidade model cards sagemaker licenciamento human centered">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">visibility</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c30">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D4</span><span class="tag">Explainable AI</span>
+                  </div>
+                  <p class="q">Por que transparência/explicabilidade importam? E o que são Model Cards?</p>
+                </div>
+              </button>
+              <div id="c30" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Aumentam confiança/auditoria e suportam decisões. Model Cards documentam objetivos, dados, limitações, riscos e uso adequado de modelos (ex.: no SageMaker).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========= D5: Segurança, conformidade e governança ========= -->
+        <div class="accordion-item" data-tags="d5 segurança iam permissões perfis criptografia macie privatelink responsabilidade compartilhada">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">security</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c31">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D5</span><span class="tag">Proteção</span>
+                  </div>
+                  <p class="q">Quais mecanismos AWS o guia cita para proteger sistemas de IA?</p>
+                </div>
+              </button>
+              <div id="c31" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">IAM (políticas/permissões/perfis), criptografia, Amazon Macie, AWS PrivateLink e o modelo de responsabilidade compartilhada.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d5 linhagem dados catalogação citação fontes origem model cards">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">source</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c32">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D5</span><span class="tag">Fontes</span>
+                  </div>
+                  <p class="q">O que significa “citar fontes” e documentar origens de dados em IA?</p>
+                </div>
+              </button>
+              <div id="c32" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Registrar origem/linhagem e catalogação de dados; manter documentação (ex.: Model Cards) para auditoria e confiabilidade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-tags="d5 conformidade governança iso soc leis responsabilidade algorítmica">
+          <div class="accordion-header p-3 d-flex gap-3 align-items-start">
+            <div class="icon-badge"><span class="material-symbols-rounded">gavel</span></div>
+            <div class="w-100">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c33">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap gap-2 mb-1">
+                    <span class="tag domain">D5</span><span class="tag">Compliance</span>
+                  </div>
+                  <p class="q">Que tipos de padrões/regulações o guia menciona para conformidade em IA?</p>
+                </div>
+              </button>
+              <div id="c33" class="accordion-collapse collapse" data-bs-parent="#flashcards">
+                <div class="accordion-body pt-2 pb-0 px-0">
+                  <p class="a">Padrões e frameworks como ISO, SOC e leis/controles relacionados à responsabilidade algorítmica (dependendo do contexto regulatório).</p>
                 </div>
               </div>
             </div>
@@ -536,8 +952,8 @@
     </div>
 
     <div class="footer mt-4 d-flex flex-column flex-md-row gap-2 justify-content-between">
-      <div>Feito para revisão rápida no celular (lista + busca + expand/recolher).</div>
-      <div class="subtle">Dica: abra no mobile e use “Adicionar à tela inicial”.</div>
+      <div>Cards claros (texto escuro) para leitura melhor no mobile.</div>
+      <div class="subtle">Dica: busque por “D3” ou “RAG” para revisar um domínio específico.</div>
     </div>
   </div>
 
@@ -545,7 +961,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Helpers
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -571,25 +986,21 @@
         }
         const text = item.innerText.toLowerCase();
         const tags = (item.getAttribute('data-tags') || '').toLowerCase();
-        const match = text.includes(t) || tags.includes(t);
-        item.style.display = match ? '' : 'none';
+        item.style.display = (text.includes(t) || tags.includes(t)) ? '' : 'none';
       });
       setCountInfo();
     }
 
     function setAllCollapses(open) {
-      // Only act on visible items for nicer UX
       const visibleItems = items.filter(i => i.style.display !== 'none');
       visibleItems.forEach(item => {
         const collapse = $('.accordion-collapse', item);
         if (!collapse) return;
-
         const bs = bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false });
         open ? bs.show() : bs.hide();
       });
     }
 
-    // Events
     searchInput.addEventListener('input', (e) => filterCards(e.target.value));
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
@@ -599,7 +1010,6 @@
     expandAllBtn.addEventListener('click', () => setAllCollapses(true));
     collapseAllBtn.addEventListener('click', () => setAllCollapses(false));
 
-    // Init
     setCountInfo();
   </script>
 </body>
